@@ -4,7 +4,7 @@ package tw.org.iiijava;
 
 public class TWId {
 	private String id;
-	static String check= "ABCDEFGHJKLMNPQRSTUVXYWZIO";//中華民國身分證字號英文字首的編號規則
+	static String check= "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	
 	public TWId(){
 		this((int)(Math.random()*26));
@@ -49,7 +49,8 @@ public class TWId {
 	static boolean isRight(String id){
 		boolean ret = false;
 		if(id.matches("^[A-Z][12][0-9]{8}$")){//使用正則運算式^$去表示 :首字母,第一位數字,其餘8位數字	
-			//驗證碼的比對		
+			//驗證碼的比對
+			
 			int pos = check.indexOf(id.charAt(0));
 			int n12 = pos+10;
 			int n1 = n12/10;
@@ -64,8 +65,8 @@ public class TWId {
 			int n10 = Integer.parseInt(id.substring(8, 9));
 			int n11 = Integer.parseInt(id.substring(9, 10));
 			int sum = n1*1+n2*9+n3*8+n4*7+n5*6+n6*5+n7*4+n8*3+n9*2+n10*1+n11*1;
-			//中華民國身分證的號碼的驗證公式				
-			ret = sum%10==0;//如果整除，該組號碼有效
+									
+			ret = sum%10==0;
 		}
 		return ret;
 	}
